@@ -1,3 +1,6 @@
+import iconSvg from '../../../assets/marker-icon.svg';
+
+
 export default async () => {
     const mapEl = document.getElementById('map');
     if (mapEl) {
@@ -14,6 +17,18 @@ export default async () => {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
+
+            const icon = L.icon({
+                iconUrl: iconSvg,
+                // shadowUrl: 'leaf-shadow.png',
+
+                iconSize:     [38, 95],
+                shadowSize:   [50, 64],
+                iconAnchor:   [22, 94],
+                shadowAnchor: [4, 62],
+                popupAnchor:  [-3, -76]
+            });
+            L.marker([54.4526626, 17.0398293], {icon: icon}).addTo(map);
         } catch(error) {
             console.log(error);
         }
