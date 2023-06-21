@@ -1,4 +1,8 @@
 import iconSvg from '../../../assets/marker-icon.svg';
+import {marker} from "../../../public/js/app/node_modules_leaflet_dist_leaflet-src_js";
+
+const formEl = document.querySelector('.form');
+const coordinates = document.getElementById('coordinates');
 
 
 export default async () => {
@@ -18,17 +22,25 @@ export default async () => {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
-            const icon = L.icon({
-                iconUrl: iconSvg,
-                // shadowUrl: 'leaf-shadow.png',
 
-                iconSize:     [38, 95],
-                shadowSize:   [50, 64],
-                iconAnchor:   [22, 94],
-                shadowAnchor: [4, 62],
-                popupAnchor:  [-3, -76]
+
+            // add form after dblclick
+            mapEl.addEventListener('dblclick', (event) => {
+                formEl.classList.add('active');
+
+                // to find coordinates
+                const latLng = map.mouseEventToLatLng(event);
+
+                // icon for marker
+                const customIcon = L.icon({
+                    iconUrl: iconSvg,
+                    iconSize: [32, 32],
+                });
+
+                const marker = L.marker(latLng, { icon: customIcon }).addTo(map).bindPopup('some text');
+                coordinates.value = latLng.lat + ", " + latLng.lng;
+
             });
-            L.marker([54.4526626, 17.0398293], {icon: icon}).addTo(map);
         } catch(error) {
             console.log(error);
         }

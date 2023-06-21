@@ -12,7 +12,32 @@
 </head>
 <body>
 
-<div id="map"></div>
+<section class = "main">
+    <div id="map"></div>
+    <div class="form" >
+        <h1>Data about place that you choose:</h1>
+        <form>
+            <ul>
+                <li>
+                    <label for="name">Name of the place</label>
+                    <input type="text" id="name" name="name" required>
+                </li>
+                <li>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" required>
+                </li>
+                <li>
+                    <label for="coordinates">Сoordinates</label>
+                    <input type="text" id="coordinates" name="coordinates" readonly>
+                </li>
+                <li>
+                    <input type="submit" value="Save">
+                </li>
+            </ul>
+        </form>
+    </div>
+
+</section>
 
 </body>
 </html>
