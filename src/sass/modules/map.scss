@@ -3,12 +3,19 @@
 }
 .form{
   display: none;
+  margin-left: 40px;
 }
 .active{
   display: block;
 }
 #map {
-
-  height: 100vh; // vh
+  height: 100vh;
   width: 50%;
+}
+.description{
+  text-align: center;
+}
+p, h2{
+  margin: 0;
+  padding: 0;
 }
